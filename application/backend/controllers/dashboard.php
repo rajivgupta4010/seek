@@ -18,6 +18,7 @@ class dashboard extends CI_Controller {
     public function index() {
         $data["master_title"] = $this->config->item('sitename') . " | Dashboard";
         $data['master_body'] = 'dashboard';
+		$data['sidebar_main'] = 'dashboard';
         $this->load->theme('dashboard/index', $data);
     }
 

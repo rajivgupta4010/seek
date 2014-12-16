@@ -24,7 +24,9 @@
 <body class="page-header-fixed page-quick-sidebar-over-content">
     
     <?php include_once('header.php');
+	
     ?>
+    
     <!-- BEGIN CONTAINER -->
 <div class="page-container">
 	<!-- BEGIN SIDEBAR -->

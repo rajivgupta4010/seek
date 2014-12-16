@@ -29,14 +29,14 @@
 					</form>
 					<!-- END RESPONSIVE QUICK SEARCH FORM -->
 				</li>
-				<li class="start active ">
-					<a href="index.html">
+				<li class="start <?php if(isset($sidebar_main) and $sidebar_main=='dashboard') echo 'active';?>">
+					<a href="<?php echo site_url('dashboard')?>">
 					<i class="icon-home"></i>
 					<span class="title">Dashboard</span>
 					<span class="selected"></span>
 					</a>
 				</li>
-				<li>
+				<li class="<?php if(isset($sidebar_main) and $sidebar_main=='users') echo 'active open';?> ">
 					<a href="javascript:;">
 					<i class="icon-basket"></i>
 					<span class="title">Users</span>

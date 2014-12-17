@@ -69,7 +69,7 @@ class common extends CI_Model {
 			  $resultset=$query->row_array();
 			  if($resultset["email"] != $this->session->userdata("username")){
 				 $this->session->set_flashdata("errormsg","Please login to access admin panel first");
-				// redirect("login"); 
+				 redirect("login"); 
 			  }
 			 
 		 }

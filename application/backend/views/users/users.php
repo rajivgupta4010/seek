@@ -28,7 +28,7 @@
 			  <div class="col-md-12">
 					<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 				<h3 class="page-title">
-					User Type1</small>
+					Administrator
 				  </h3>
 				  <ul class="page-breadcrumb breadcrumb">
 					  <li>

@@ -38,25 +38,26 @@
 				</li>
 				<li class="<?php if(isset($sidebar_main) and $sidebar_main=='users') echo 'active open';?> ">
 					<a href="javascript:;">
-					<i class="icon-basket"></i>
+					<i class="icon-users"></i>
 					<span class="title">Users</span>
 					<span class="arrow "></span>
 					</a>
+                                   
 					<ul class="sub-menu">
+						<li <?php if(isset($sidebar_main) and ($sidebar_main=='users') ) echo "class='active'";?>>
+							<a href="<?php echo site_url('users/all_users/0')?>">
+							<i class="icon-user-following"></i>
+							Administrator</a>
+						</li>
 						<li>
 							<a href="<?php echo site_url('users/all_users/1')?>">
-							<i class="icon-home"></i>
-							Type1</a>
-						</li>
-						<li>
-							<a href="<?php echo site_url('users/all_users/2')?>">
-							<i class="icon-basket"></i>
-							Type2</a>
+							<i class=" icon-user-follow"></i>
+							Parent</a>
 						</li>
                         <li>
-							<a href="<?php echo site_url('users/all_users/3')?>">
-							<i class="icon-basket"></i>
-							Type2</a>
+							<a href="<?php echo site_url('users/all_users/2')?>">
+							<i class="icon-user-unfollow"></i>
+							Tutor</a>
 						</li>
 						
 					</ul>

@@ -79,7 +79,7 @@ else
 
 $config['main_url']	= $main_url;
 $config["usertype"] = $usertype;
-$config['sitename'] = "Career View";   // Please enter you name of site here
+$config['sitename'] = "Academy";   // Please enter you name of site here
 $config['path_to_logo'] = $config['base_url']."images/logo.png"; // Please enter the path of logo of site
 $config['footer_image'] = $config['base_url']."images/logo_text.png";  // If you want to show anything(image) to the footer please enter here
 $config['perpageitem'] = "20";

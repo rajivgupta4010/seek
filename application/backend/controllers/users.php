@@ -26,10 +26,11 @@ class users extends CI_Controller {
 	{
 		
 		$data["master_title"] = $this->config->item('sitename') . " | Dashboard";
-        $data['master_body'] = 'users';
-        $data['parent_class'] = 'users';
+                $data['master_body'] = 'users';
+                $data['parent_class'] = 'users';
 		$data['sidebar_main'] = 'users';
-		$data['alldata'] = $this->user_model->get_entry(array('status'=> 1, 'user_type'=>$id));
+		$data['alldata'] = $this->user_model->get_entry(array('user_type'=>$id));
+                $data['type']= $id;
 	//	print_r($data['alldata']);
         $this->load->theme('dashboard/index', $data);
 		

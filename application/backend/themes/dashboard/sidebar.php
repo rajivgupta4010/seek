@@ -44,20 +44,25 @@
 					</a>
                                    
 					<ul class="sub-menu">
-						<li <?php if(isset($sidebar_main) and ($sidebar_main=='users') ) echo "class='active'";?>>
-							<a href="<?php echo site_url('users/all_users/0')?>">
+						<li <?php if(isset($sidebar_main) and ($sidebar_main=='users') and ($this->uri->segment(3)==0)) echo "class='active'";?>>
+							<a href="<?php echo site_url('users/all_users')?>">
 							<i class="icon-user-following"></i>
 							Administrator</a>
 						</li>
-						<li>
+						<li <?php if(isset($sidebar_main) and ($sidebar_main=='users') and ($this->uri->segment(3)==1)) echo "class='active'";?>>
 							<a href="<?php echo site_url('users/all_users/1')?>">
 							<i class=" icon-user-follow"></i>
 							Parent</a>
 						</li>
-                        <li>
+                        <li <?php if(isset($sidebar_main) and ($sidebar_main=='users') and ($this->uri->segment(3)==2)) echo "class='active'";?>>
 							<a href="<?php echo site_url('users/all_users/2')?>">
 							<i class="icon-user-unfollow"></i>
 							Tutor</a>
+						</li>
+                                                 <li <?php if(isset($sidebar_main) and ($sidebar_main=='users') and ($this->uri->segment(3)==3)) echo "class='active'";?>>
+							<a href="<?php echo site_url('users/all_users/3')?>">
+							<i class="icon-user-unfollow"></i>
+							Student</a>
 						</li>
 						
 					</ul>

@@ -61,16 +61,29 @@ class common extends CI_Model {
  	  }
 	  
  	 if($controllername !="login"){
-                 
+                
 	  	 if($this->config->item("usertype")=="admin"){
+                     $email = $this->session->userdata('email');
+                     if(isset($email) and !empty($email)){
 			  $this->db->select("email");
 			  $this->db->from("users");
+                          $this->db->where('email', $this->session->userdata('email'));
 			  $query=$this->db->get();
-			  $resultset=$query->row_array();
-			  if($resultset["email"] != $this->session->userdata("username")){
-				 $this->session->set_flashdata("errormsg","Please login to access admin panel first");
-				 redirect("login"); 
-			  }
+			  $resultset=$query->result();
+                          //echo $this->db->last_query();
+                          
+                          print_r($resultset);
+                         // die;
+			  if(count($resultset)<1)
+                          {
+                              
+                              redirect ('login');
+                          }
+                     }
+                      else
+                      {
+                          redirect('login');
+                      }
 			 
 		 }
 	   }

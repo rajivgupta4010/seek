@@ -115,12 +115,13 @@ var Login = function () {
 	        });
 
 	        jQuery('#forget-password').click(function () {
-	            jQuery('.login-form').hide();
+	            jQuery('.login-form2').hide();
 	            jQuery('.forget-form').show();
+                    
 	        });
 
 	        jQuery('#back-btn').click(function () {
-	            jQuery('.login-form').show();
+	            jQuery('.login-form2').show();
 	            jQuery('.forget-form').hide();
 	        });
 
@@ -254,10 +255,10 @@ var Login = function () {
             handleRegister();        
 	       
 	       	$.backstretch([
-		        "assets/admin/pages/media/bg/1.jpg",
-    		    "assets/admin/pages/media/bg/2.jpg",
-    		    "assets/admin/pages/media/bg/3.jpg",
-    		    "assets/admin/pages/media/bg/4.jpg"
+		        "../assets/admin/pages/media/bg/1.jpg",
+    		    "../assets/admin/pages/media/bg/2.jpg",
+    		    "../assets/admin/pages/media/bg/3.jpg",
+    		    "../assets/admin/pages/media/bg/4.jpg"
 		        ], {
 		          fade: 1000,
 		          duration: 8000

@@ -27,9 +27,31 @@ class users extends CI_Controller {
 		
 		$data["master_title"] = $this->config->item('sitename') . " | Dashboard";
                 $data['master_body'] = 'users';
+				$data['js'] = array('modal.js');
+				if($id<4)
+				{
+					 $data['master_body'] = 'users'.$id;
+				}
                 $data['parent_class'] = 'users';
-		$data['sidebar_main'] = 'users';
-		$data['alldata'] = $this->user_model->get_entry(array('user_type'=>$id));
+				$data['sidebar_main'] = 'users';
+				$search = array();
+				if($id==0)
+				{
+					$search = array('admin'=>1);
+				}
+				if($id==1)
+				{
+					$search = array('parent'=>1);
+				}
+				if($id==2)
+				{
+					$search = array('teacher'=>1);
+				}
+				if($id==3)
+				{
+					$search = array('child'=>1);
+				}
+				$data['alldata'] = $this->user_model->get_entry($search);
                 $data['type']= $id;
 	//	print_r($data['alldata']);
         $this->load->theme('dashboard/index', $data);
@@ -38,7 +60,7 @@ class users extends CI_Controller {
 		
 	}
    
-   public function modal2($id=0)
+   public function item($id=0)
 		{
 			if(isset($id)and !empty($id))
 			{

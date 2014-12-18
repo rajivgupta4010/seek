@@ -1,7 +1,7 @@
 <IfModule mod_rewrite.c>
 
     RewriteEngine On
-	#RewriteBase /solitaire/demo/vpn/seek
+	#RewriteBase /public_html
 	#RewriteBase /demo/motorbike
 	#RewriteBase /demo/motorbike/index.php
  	 #RewriteBase 

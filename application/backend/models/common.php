@@ -67,13 +67,10 @@ class common extends CI_Model {
                      if(isset($email) and !empty($email)){
 			  $this->db->select("email");
 			  $this->db->from("users");
-                          $this->db->where('email', $this->session->userdata('email'));
+              $this->db->where('email', $this->session->userdata('email'));
 			  $query=$this->db->get();
 			  $resultset=$query->result();
-                          //echo $this->db->last_query();
-                          
-                          print_r($resultset);
-                         // die;
+                         
 			  if(count($resultset)<1)
                           {
                               

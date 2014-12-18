@@ -49,7 +49,7 @@
         <!-- BEGIN LOGO -->
         <div class="logo">
             <a href="index.html">
-    <!--	<img src="<?php echo base_url(); ?>assets/admin/layout/img/logo-big.png" alt=""/>-->
+    	<img src="<?php echo base_url(); ?>assets/admin/layout/img/logo-big.png" alt=""/>
             </a>
         </div>
         <!-- END LOGO -->

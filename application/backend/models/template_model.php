@@ -1,8 +1,8 @@
 <?php
 
-class user_model extends CI_Model {
+class template_model extends CI_Model {
 
-    var $tablename = 'users'; 
+    var $tablename = 'templates'; 
     function __construct() {
         parent::__construct();
     }
@@ -26,13 +26,12 @@ class user_model extends CI_Model {
        return $this->db->insert_id();
     }
 
-     function update_entry($data, $id)
+    function update_entry($data, $id)
     {
             $this->db->where('id', $id);
             $query = $this->db->update($this->tablename, $data);
             return $this->db->affected_rows();
     }
-    
 }
 
 ?>

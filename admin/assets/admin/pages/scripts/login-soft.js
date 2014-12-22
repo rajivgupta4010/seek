@@ -30,7 +30,48 @@ var Login = function () {
 	            },
 
 	            invalidHandler: function (event, validator) { //display error alert on form submit   
-	                $('.alert-danger', $('.login-form')).show();
+	                $('.alert-danger', $('.login-form2')).show();
+	            },
+
+	            highlight: function (element) { // hightlight error inputs
+	                $(element)
+	                    .closest('.form-group').addClass('has-error'); // set error class to the control group
+	            },
+
+	            success: function (label) {
+	                label.closest('.form-group').removeClass('has-error');
+	                label.remove();
+	            },
+
+	            errorPlacement: function (error, element) {
+	                error.insertAfter(element.closest('.input-icon'));
+	            },
+
+	            submitHandler: function (form) {
+                       
+	                form.submit();
+	            }
+	        });
+                
+                $('.forget-form').validate({
+	            errorElement: 'span', //default input error message container
+	            errorClass: 'help-block', // default input error message class
+	            focusInvalid: false, // do not focus the last invalid input
+	            rules: {
+	                email: {
+	                    required: true,
+                            email: true
+	                }
+	            },
+
+	            messages: {
+	                email: {
+	                    required: "Email is required."
+	                }
+	            },
+
+	            invalidHandler: function (event, validator) { //display error alert on form submit   
+	                $('.alert-danger', $('.forget-form')).show();
 	            },
 
 	            highlight: function (element) { // hightlight error inputs
@@ -53,10 +94,139 @@ var Login = function () {
 	            }
 	        });
 
-	        $('.login-form input').keypress(function (e) {
+	        $('.login-form2 input').keypress(function (e) {
 	            if (e.which == 13) {
-	                if ($('.login-form').validate().form()) {
-	                    $('.login-form').submit();
+                        
+	                if ($('.login-form2').validate().form()) {
+	                    $('.login-form2').submit();
+	                }
+	                return false;
+	            }
+	        });
+
+	        $('.forget-form input').keypress(function (e) {
+	            if (e.which == 13) {
+                        
+	                if ($('.forget-form').validate().form()) {
+	                    $('.forget-form').submit();
+	                }
+	                return false;
+	            }
+	        });
+	}
+        
+var handleReset = function() {
+            	$('.reset').validate({
+	            errorElement: 'span', //default input error message container
+	            errorClass: 'help-block', // default input error message class
+	            focusInvalid: false, // do not focus the last invalid input
+	            rules: {
+	                password: {
+	                    required: true,
+                             minlength : 5,
+                            maxlength: 12
+                           
+	                },
+	                c_password: {
+	                    required: true,
+                            equalTo: "#password",
+                             minlength : 5,
+                            maxlength: 12
+                          
+	                }
+	            },
+
+	            messages: {
+	                c_password: {
+	                    required: "Password is required.",
+                            
+	                },
+	                password: {
+	                    required: "Password is required.",
+                            
+	                }
+	            },
+
+	            invalidHandler: function (event, validator) { //display error alert on form submit   
+	                $('.alert-danger', $('.login-form2')).show();
+	            },
+
+	            highlight: function (element) { // hightlight error inputs
+	                $(element)
+	                    .closest('.form-group').addClass('has-error'); // set error class to the control group
+	            },
+
+	            success: function (label) {
+	                label.closest('.form-group').removeClass('has-error');
+	                label.remove();
+	            },
+
+	            errorPlacement: function (error, element) {
+	                error.insertAfter(element.closest('.input-icon'));
+	            },
+
+	            submitHandler: function (form) {
+                       
+	                form.submit();
+	            }
+	        });
+                
+                $('.forget-form').validate({
+	            errorElement: 'span', //default input error message container
+	            errorClass: 'help-block', // default input error message class
+	            focusInvalid: false, // do not focus the last invalid input
+	            rules: {
+	                email: {
+	                    required: true,
+                            email: true
+	                }
+	            },
+
+	            messages: {
+	                email: {
+	                    required: "Email is required."
+	                }
+	            },
+
+	            invalidHandler: function (event, validator) { //display error alert on form submit   
+	                $('.alert-danger', $('.forget-form')).show();
+	            },
+
+	            highlight: function (element) { // hightlight error inputs
+	                $(element)
+	                    .closest('.form-group').addClass('has-error'); // set error class to the control group
+	            },
+
+	            success: function (label) {
+	                label.closest('.form-group').removeClass('has-error');
+	                label.remove();
+	            },
+
+	            errorPlacement: function (error, element) {
+	                error.insertAfter(element.closest('.input-icon'));
+	            },
+
+	            submitHandler: function (form) {
+                       
+	                form.submit();
+	            }
+	        });
+
+	        $('.login-form2 input').keypress(function (e) {
+	            if (e.which == 13) {
+                        
+	                if ($('.login-form2').validate().form()) {
+	                    $('.login-form2').submit();
+	                }
+	                return false;
+	            }
+	        });
+
+	        $('.forget-form input').keypress(function (e) {
+	            if (e.which == 13) {
+                        
+	                if ($('.forget-form').validate().form()) {
+	                    $('.forget-form').submit();
 	                }
 	                return false;
 	            }
@@ -252,6 +422,7 @@ var Login = function () {
         	
             handleLogin();
             handleForgetPassword();
+            handleReset();
             handleRegister();        
 	       
 	       	$.backstretch([

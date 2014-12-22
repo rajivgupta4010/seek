@@ -124,7 +124,7 @@
                                         </td>
 
                                         <td class=" "> 
-                                            <a id="ajax-demo" href="#" data-target="" data-id="<?php echo $data->id;?>" data-toggle="modal" class="btn default btn-xs purple">
+                                            <a  href="<?php echo site_url('users/edit_user').'/'.$data->id;?>" data-target="" data-id="<?php echo $data->id;?>" data-toggle="modal" class="btn default btn-xs purple">
                                                 <i class="fa fa-edit"></i> Edit </a>
                                             <a href="#" class="btn confirm default btn-xs black">
                                                 <i class="fa fa-trash-o"></i> Delete </a>

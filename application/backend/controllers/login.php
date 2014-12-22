@@ -16,7 +16,36 @@ class login extends CI_Controller {
     public function index() {
         $data["master_title"] = $this->config->item('sitename') . " | Login";
         $username = trim($this->input->post('username'));
-        if (isset($_POST)and ( !empty($_POST))) {
+        $forget = 0;
+        
+        if(isset($_POST)and isset($_POST['forget_pass']))
+        {
+            $forget = 1;
+            $email_detail = $this->user_model->get_entry(array('email' => $this->input->post('email'), 'admin' => 1, 'status'=>1));
+            // Send email 
+            $this->load->model('email_model');
+            if(count($email_detail)>0)
+            {
+                $key = sha1(microtime());
+                $email_array['to'] = $email_detail[0]->email;
+                $email_array['subject'] = 'Password reset request';
+                $email_array['message'] = $key;
+                $this->load->model('template_model');
+                $forgotpage = $this->template_model->get_entry(array('id'=>1));
+                $this->user_model->update_entry(array('reset_key'=>$key),$email_detail[0]->id);
+                $key = site_url('login/reset')."?key={$key}&email={$this->input->post('email')}";
+                $email_array['message'] = str_replace("###URL###",$key,$forgotpage[0]->content);
+                $this->email_model->sendIndividualEmail($email_array);
+                $data['sucess'] = 'Please check your email address ';
+                
+            }  else {
+            
+                 $data['error'] = 'Invalid Email!';
+            }
+            //
+            
+        }
+        if (isset($_POST)and ( !empty($_POST)) and $forget==0) {
             $username = trim($this->input->post('email'));
             $password = trim($this->input->post('password'));
             $this->load->library('form_validation');
@@ -27,7 +56,7 @@ class login extends CI_Controller {
             }
 
             if (!isset($data['errorflag'])) {
-                $user = $this->user_model->get_entry(array('email' => $username, 'user_type' => 0));
+                $user = $this->user_model->get_entry(array('email' => $username, 'admin' => 1));
 
 
                 if (count($user) == 1) {
@@ -70,6 +99,38 @@ class login extends CI_Controller {
         $this->session->set_flashdata("successmsg", "Log out successfully");
         redirect(base_url() . "login");
     }
-
+    public function reset()
+    {
+        $key = $this->input->get('key');
+        $email = $this->input->get('email');
+        if(empty($key) or empty($email))
+        {
+            redirect('login');
+            
+        }
+        
+        $data['user'] = $this->user_model->get_entry(array('email' => $email, 'reset_key' => $key, 'admin'=>1));
+        //print_r($data);
+        if(count($data['user'])==1)
+        {
+            if(isset($_POST)and !empty($_POST))
+            {
+                $password = $this->input->post('password');
+                 $email = $this->input->post('email');
+                 $password = $this->encrypt->sha1($password);
+                $data['sucess'] = $this->user_model->update_entry(array('password'=>$password,'reset_key'=>''), $email);
+                redirect('login');
+            // print_r($data['sucess']);   
+            }
+            
+            $this->load->view('login/reset',$data);
+        }
+        else
+        {
+            redirect('login');
+        }
+            
+        
+    }
     /*     * *********************************************Login function ends ************************************************************* */
 }

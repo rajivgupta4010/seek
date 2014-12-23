@@ -6,7 +6,7 @@
 
     <div class="page-footer-inner">
 
-        2014 &copy; Metronic by PLex.
+        <?php echo date('Y');?> &copy; <?php echo WEBSITE_NAME;?> by PLex.
 
     </div>
 

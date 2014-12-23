@@ -4,7 +4,7 @@
 	<div class="page-header-inner">
 		<!-- BEGIN LOGO -->
 		<div class="page-logo">
-			<a href="index.html">
+			<a href="<?php echo site_url('dashboard');?>">
 			<img src="<?php echo base_url(); ?>assets/admin/layout/img/logo.png" alt="logo" class="logo-default"/>
 			</a>
 			<div class="menu-toggler sidebar-toggler hide">
@@ -38,7 +38,7 @@
 					</a>
 					<ul class="dropdown-menu">
 						<li>
-							<a href="<?php echo site_url('profile');?>">
+							<a href="<?php echo site_url('users/edit_user').'/'.$this->session->userdata('user_id');?>">
 							<i class="icon-user"></i> My Profile </a>
 						</li>
 						

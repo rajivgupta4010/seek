@@ -73,6 +73,8 @@ class login extends CI_Controller {
                         $data['sucess'] = 1;
                         $userdata = array(
                             'email' => $user[0]->email,
+                            'user_id' => $user[0]->id,
+
                             'username' => $user[0]->email,
                             'admin' => 1,
                             'logged_in' => TRUE

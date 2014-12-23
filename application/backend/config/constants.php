@@ -41,7 +41,7 @@ define('ADMIN', 'Rajiv Gupta');
 define('ADMIN_MAIL', 'rajivgupta4010@gmail.com');
 //define('WEBSITE_URL', 'http://112.196.33.85/solitaire/demo/seek');
 define('WEBSITE_URL', 'http://localhost/seek2');
-define('WEBSITE_NAME', 'Learning APP');
+define('WEBSITE_NAME', 'Xcooly.com');
       
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

@@ -71,6 +71,14 @@
                         </div>
                     </div>
                     <div class="portlet-body">
+                    <div class="table-toolbar">
+								<div class="btn-group">
+									<a href="<?php echo site_url('users/edit_user'); ?>" id="sample_editable_1_new" class="btn green">
+									Add New user <i class="fa fa-plus"></i>
+									</a>
+								</div>
+								
+							</div>
                         <table class="table table-striped table-bordered table-hover" id="sample_1">
                             <thead>
                                 <tr>

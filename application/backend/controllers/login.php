@@ -120,7 +120,7 @@ class login extends CI_Controller {
                 $password = $this->input->post('password');
                  $email = $this->input->post('email');
                  $password = $this->encrypt->sha1($password);
-                $data['sucess'] = $this->user_model->update_entry(array('password'=>$password,'reset_key'=>''), $email);
+                $data['sucess'] = $this->user_model->update_entry(array('password'=>$password,'reset_key'=>'', 'status'=>1), $email);
                 redirect('login');
             // print_r($data['sucess']);   
             }

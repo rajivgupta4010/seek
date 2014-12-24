@@ -29,89 +29,15 @@
 */
 date_default_timezone_set("Asia/Kolkata");
 
-/* Local site  */
-if($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.0.1"){
-	 $usertype=explode("/",$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"]);
-}
-else if($_SERVER['SERVER_NAME'] == "192.168.1.226" || $_SERVER['SERVER_NAME'] == "112.196.33.85"){
-	 $usertype=explode("/",$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"]);
-}
-$key1 = array_search('admin', $usertype);
-$usertype = $usertype[$key1];
 
-if($usertype != "admin"){
- 	 if($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.0.1"){
-		$hit_url='http://localhost/';
-		$main_url='http://localhost/seek/';
- 	}
-	else if($_SERVER['SERVER_NAME'] == "192.168.1.226" ){
-			 $hit_url='http://192.168.1.226/solitaire/demo/';
-			 $main_url='http://192.168.1.226/solitaire/demo/seek/';
-	}
-	else if($_SERVER['SERVER_NAME'] == "112.196.33.85" ){
-			$hit_url='http://112.196.33.85/solitaire/demo/';
-			$main_url='http://112.196.33.85/solitaire/demo/seek/';
-		}
-	else{
-		//for live site put details here
-	}
-	 $config['base_url']	= $hit_url.'seek/restaurant/';
-}
-else
-{
-	if($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.0.1"){
-		$hit_url='http://localhost/';
-		$main_url='http://localhost/seek/';
- 	}
-	else if($_SERVER['SERVER_NAME'] == "192.168.1.226" ){
-			 $hit_url='http://192.168.1.226/solitaire/demo/';
-			 $main_url='http://192.168.1.226/solitaire/demo/seek/';
-	}
-	else if($_SERVER['SERVER_NAME'] == "112.196.33.85" ){
-			$hit_url='http://112.196.33.85/solitaire/demo/';
-			$main_url='http://112.196.33.85/solitaire/demo/seek/';
-		}
-	else{
-		//for live site put details here
-	}
-	 $config['base_url']	= '';
-}
 
-$config['main_url']	= $main_url;
-$config["usertype"] = $usertype;
+
+$config["usertype"] = 'admin';
 $config['sitename'] = "Academy";   // Please enter you name of site here
-$config['path_to_logo'] = $config['base_url']."images/logo.png"; // Please enter the path of logo of site
-$config['footer_image'] = $config['base_url']."images/logo_text.png";  // If you want to show anything(image) to the footer please enter here
-$config['perpageitem'] = "20";
-$config['error_page'] = "404";
-$config['adminemail'] = "vikastesting@ymail.com";
-$config['allowedimages'] = array("gif","jpg","jpeg","png","GIF","JPG","JPEG","PNG");
-$config['blogimages']= $main_url.'blogimages/';
-$config['blogdefaultimage'] = "blogdefault.png";
-
-
-$config['food_group_image_url']=$main_url."food_group_images/"; 
-$config['content_images']= $main_url.'uploads/';
-$config['content_default_images'] = $main_url."images/1.png";
-
-$config['slideshowimages'] = $main_url.'slideshowimages/';
-$config['couponsimages'] = $main_url.'couponsimages/';
-$config['restaurantimages'] = $main_url.'restaurantimages/';
-$config['default_couponsimages'] = $main_url."images/1.png";
-
-
-$config['default_slideshowimages'] = $main_url."images/1.png";
-
-$config['news_images'] = $main_url.'uploads/';
-$config['default_newsimages'] = $main_url."images/1.png";
-
-$config['offers_images'] = $main_url.'offers_images/';
-$config['default_offers_images'] = $main_url."images/1.png";
-//Admin and seller shares
 $config['adminshare'] = "";
 $config['backend'] = 1;
 
-
+$config['base_url']='';
 $config['process']='yes';  // Yes to show the process happening on page   like printing quering and all.....   '' or 'no' for hiding it
 /*
 
@@ -783,4 +709,3 @@ $config['proxy_ips'] = '';
 /* End of file config.php */
 
 /* Location: ./application/config/config.php */
-

@@ -66,7 +66,7 @@ class users extends CI_Controller {
     function edit_user($id=0)
     {
         
-        print_r($_POST);
+      
        if(isset($_POST) and !empty($_POST))
        {
            if(!isset($_POST['parent']))  $_POST['parent'] =0;
@@ -74,24 +74,75 @@ class users extends CI_Controller {
              if(!isset($_POST['teacher']))  $_POST['teacher'] =0;
            $id = $this->input->post('id');
            unset($_POST['id']);
-           unset($_POST['email']);
-           $data['insert_id']= $this->user_model->update_entry($_POST, $id);
+		   if(empty($id))
+		   {
+			   $this->load->library('form_validation');
+			   $this->form_validation->set_rules('email', 'Email', 'required|is_unique[users.email]|valid_email');
+			   if ($this->form_validation->run() == FALSE)
+				{
+					$data['error_flag'] = 1;
+				}
+			    else
+				{
+					$data['insert_id']= $this->user_model->insert_entry($_POST);
+					
+					// SEND mail
+				
+					$key = sha1(microtime());
+					$email_array['to'] = 'rajivgupta4010@gmail.com';
+					$email_array['subject'] = 'Welcome, New Account confirmation';
+					$email_array['message'] = $key;
+					$this->load->model('template_model');
+					$forgotpage = $this->template_model->get_entry(array('id'=>2));
+					$this->user_model->update_entry(array('reset_key'=>$key),$data['insert_id']);
+					$key = site_url('login/reset')."?key={$key}&email={$this->input->post('email')}";
+					$email_array['message'] = str_replace("###URL###",$key,$forgotpage[0]->content);
+					$this->load->model('email_model');
+					$this->email_model->sendIndividualEmail($email_array);
+					$data['sucess'] = 'Please check your email address ';
+					
+				}
+                
+		   }
+		   else
+		   {
+			   unset($_POST['email']);
+			   $data['insert_id']= $this->user_model->update_entry($_POST, $id);
+		   }
            //print_r($data);
-           if($data['insert_id']==1)
+           if(isset($data['insert_id']) and $data['insert_id']==1)
            {
                $data['sucess'] = '<strong>Success!</strong> The user has been updated' ;
            }
            
        }
-       $data["master_title"] = $this->config->item('sitename') . " | Edit users";
+	   
+       $data["master_title"] = $this->config->item('sitename') . " | Edit | New users";
         $data['master_body'] = 'edit_users';
-
+		
+		
         $data['parent_class'] = 'users';
         $data['sidebar_main'] = 'users';
-        $data['type'] = 'Update user';
-        $data['user'] = $this->user_model->get_entry(array('id'=>$id));
+		$data['type'] = 'New user';
+		
+		if($id!=0)
+		{
+			
+			$data['type'] = 'Update user';
+			$data['user'] = $this->user_model->get_entry(array('id'=>$id));
+		
+			if(count($data['user'])==0)
+			{
+				redirect('users/edit_user');
+			}
+			
+			
+
+		}
+		$this->load->theme('dashboard/index', $data);
+		
        // print_r($data['user']);
-        $this->load->theme('dashboard/index', $data);
+       
     }
     
     /*     * *********************************************Login function ends ************************************************************* */

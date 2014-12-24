@@ -1,5 +1,3 @@
-
-
 <?PHP
  $config = array(
       'protocol' => 'smtp',

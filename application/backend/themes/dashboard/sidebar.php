@@ -87,6 +87,11 @@
                             <i class="icon-user-following"></i>
                             Forget Password</a>
                     </li>
+                    <li <?php if (isset($sidebar_main) and ( $sidebar_main == 'email_templates') and ( $sidebar_base == 'new_user')) echo "class='active'"; ?>>
+                        <a href="<?php echo site_url('templates/new_user') ?>">
+                            <i class="icon-user-following"></i>
+                           New user confirmation</a>
+                    </li>
 
 
                 </ul>

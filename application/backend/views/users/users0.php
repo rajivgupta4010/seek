@@ -16,17 +16,14 @@
                         <button type="button" class="btn default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
-                <!-- /.modal-content -->
+               
             </div>
-            <!-- /.modal-dialog -->
+            
         </div>
-        <!-- /.modal -->
-        <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-        <!-- BEGIN STYLE CUSTOMIZER --><!-- END STYLE CUSTOMIZER -->
-        <!-- BEGIN PAGE HEADER-->
+     
         <div class="row">
             <div class="col-md-12">
-                <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+               
                 <h3 class="page-title">
                     <?php if ($type == '0') echo 'Administrator'; ?>
                     <?php if ($type == '1') echo 'Parent'; ?>
@@ -67,10 +64,22 @@
                             <?php if ($type == '2') echo 'Tutor'; ?>
                             <?php if ($type == '3') echo 'Student'; ?>
                         </div>
+                       
                         <div class="tools">
+                       
                         </div>
+                        
                     </div>
+                   
                     <div class="portlet-body">
+                   <div class="table-toolbar">
+								<div class="btn-group">
+									<a href="<?php echo site_url('users/edit_user'); ?>" id="sample_editable_1_new" class="btn green">
+									Add New user <i class="fa fa-plus"></i>
+									</a>
+								</div>
+								
+							</div>
                         <table class="table table-striped table-bordered table-hover" id="sample_1">
                             <thead>
                                 <tr>
@@ -89,6 +98,7 @@
 
                                 </tr>
                             </thead>
+                           
                             <tbody>
                                 <?php foreach ($alldata as $data): ?>
 
@@ -139,34 +149,7 @@
                         </table>
                     </div>
                             
-                            <div id="ajax-modal" class="modal fade" tabindex="-1" data-focus-on="input:first" aria-hidden="true" style="display: none; margin-top: -200px;">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-									<h4 class="modal-title">Stack One</h4>
-								</div>
-								<div class="modal-body">
-									<p>
-										 One fine body…
-									</p>
-									<p>
-										 One fine body…
-									</p>
-									<p>
-										 One fine body…
-									</p>
-									<div class="form-group">
-										<input class="form-control" type="text" data-tabindex="1">
-									</div>
-									<div class="form-group">
-										<input class="form-control" type="text" data-tabindex="2">
-									</div>
-									<button class="btn blue" data-toggle="modal" href="#stack2">Launch modal</button>
-								</div>
-								<div class="modal-footer">
-									<button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-									<button type="button" class="btn btn-primary">Ok</button>
-								</div>
-							</div>
+                            
                 </div>
             </div>
             

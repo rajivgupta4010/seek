@@ -75,25 +75,8 @@
 |
 
 */
-if($_SERVER['SERVER_NAME'] == "localhost" || $_SERVER['SERVER_NAME'] == "127.0.0.1"){
-	$usertype = explode("/",$_SERVER["REQUEST_URI"]);
-}
-else if($_SERVER['SERVER_NAME'] == "192.168.1.226" || $_SERVER['SERVER_NAME'] == "112.196.33.85"){
-	$usertype = explode("/",$_SERVER["REQUEST_URI"]);
-}
-else{
-	//for live server
-}
-$key1 = array_search('admin', $usertype);
-$usertype = $usertype[$key1];
 
-if($usertype !="admin"){
-	//$route['default_controller'] = "moderator_panel";
-	$route['default_controller'] = "restaurant_panel";
-}
-else{
-	$route['default_controller'] = "login";	
-}
+$route['default_controller'] = "login";	
 $route['404_override'] = '';
 /* End of file routes.php */
 

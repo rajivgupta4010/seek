@@ -89,7 +89,7 @@
                                     <span class="help-block">
                                         ###URL### for the link 
                                      </span>
-                                    <input type="hidden" value="1" name="id" />	
+                                    <input type="hidden" value="<?php echo $content[0]->id;?>" name="id" />	
 
                                 </div>
 
